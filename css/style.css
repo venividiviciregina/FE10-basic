@@ -34,3 +34,9 @@ body > p:nth-child(3):hover {
     color: yellow;
     transform: scale(5);
 }
+
+.col-sm {
+    background-color: gray;
+    border-color: white;
+    border-style: solid;
+}
