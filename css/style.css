@@ -1,0 +1,36 @@
+
+h1 {
+    color: red; 
+    background-color: green;
+    border-style: solid; 
+    border-color: indigo; 
+    border-width: 53px; 
+    border-radius: 50px;
+    font-family: sans-serif;
+} 
+
+h2 {
+    font-size: 55px;
+}
+
+#introduction {
+    color: coral;
+}
+
+
+.header {
+    font-style: italic;
+}
+
+.big-font {
+    font-size: 100px;
+}
+
+div a {
+    color: black;
+}
+
+body > p:nth-child(3):hover {    
+    color: yellow;
+    transform: scale(5);
+}
