@@ -1,0 +1,4 @@
+curl "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
+
+
+curl -o info.txt "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
