@@ -2,3 +2,66 @@ curl "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geb
 
 
 curl -o info.txt "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
+
+
+curl -v "api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
+
+*   Trying 37.139.1.159...
+* TCP_NODELAY set
+* Connected to api.openweathermap.org (37.139.1.159) port 80 (#0)
+> GET /data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric HTTP/1.1
+> Host: api.openweathermap.org
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Server: openresty
+< Date: Sun, 26 Apr 2020 23:12:02 GMT
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 444
+< Connection: keep-alive
+< X-Cache-Key: /data/2.5/weather?q=potsdam&units=metric
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+< Access-Control-Allow-Methods: GET, POST
+<
+{
+	"coord": {
+		"lon": 13.07,
+		"lat": 52.4
+	},
+	"weather": [{
+		"id": 800,
+		"main": "Clear",
+		"description": "clear sky",
+		"icon": "01n"
+	}],
+	"base": "stations",
+	"main": {
+		"temp": 8.5,
+		"feels_like": 6.53,
+		"temp_min": 6.11,
+		"temp_max": 11.11,
+		"pressure": 1010,
+		"humidity": 65
+	},
+	"visibility": 10000,
+	"wind": {
+		"speed": 0.5
+	},
+	"clouds": {
+		"all": 0
+	},
+	"dt": 1587942175,
+	"sys": {
+		"type": 1,
+		"id": 1275,
+		"country": "DE",
+		"sunrise": 1587959030,
+		"sunset": 1588011991
+	},
+	"timezone": 7200,
+	"id": 2852458,
+	"name": "Potsdam",
+	"cod": 200
+}* Connection #0 to host api.openweathermap.org left intact
