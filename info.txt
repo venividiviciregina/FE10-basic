@@ -1,7 +1,53 @@
 curl "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
 
+{
+	"coord": {
+		"lon": 13.07,
+		"lat": 52.4
+	},
+	"weather": [{
+		"id": 800,
+		"main": "Clear",
+		"description": "clear sky",
+		"icon": "01n"
+	}],
+	"base": "stations",
+	"main": {
+		"temp": 8.46,
+		"feels_like": 5.54,
+		"temp_min": 7.22,
+		"temp_max": 10.56,
+		"pressure": 1010,
+		"humidity": 70
+	},
+	"visibility": 10000,
+	"wind": {
+		"speed": 2.1,
+		"deg": 360
+	},
+	"clouds": {
+		"all": 0
+	},
+	"dt": 1587944952,
+	"sys": {
+		"type": 1,
+		"id": 1275,
+		"country": "DE",
+		"sunrise": 1587959030,
+		"sunset": 1588011991
+	},
+	"timezone": 7200,
+	"id": 2852458,
+	"name": "Potsdam",
+	"cod": 200
+}
+
 
 curl -o info.txt "https://api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   455  100   455    0     0    455      0  0:00:01 --:--:--  0:00:01  2241
 
 
 curl -v "api.openweathermap.org/data/2.5/weather?q=Potsdam&appid=Bitte, geben Sie Ihren Schlüssel ein!&units=metric"
