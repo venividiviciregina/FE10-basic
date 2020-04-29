@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 2020-05-04</title>
+</head>
+    <script>
+        //ES5
+        //ES2015
+        let persons = [];
+        let averageAge = 0;
+        const personsNumber = prompt('Please enter the number of persons:');
+        console.log(personsNumber);
+
+
+        for (let i = 0; i < personsNumber; i++) {
+            const person = {};
+            person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
+            person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
+            persons[i] = person;
+            averageAge += person.age; 
+        }
+        averageAge /= personsNumber;
+
+        const sortedPersons = persons.sort(function (a, b) {
+                if (a.name < b.name) return -1;
+                if (a.name > b.name) return 1;
+                return 0;
+        });
+
+        for (let i = 0; i < personsNumber; i++) {
+            console.log('Person ' + (i + 1) + ': name = ' + sortedPersons[i].name + ' age = ' + sortedPersons[i].age);
+        }
+
+        console.log('Average age of person:' + averageAge);
+    </script>
+<body>
+    
+</body>
+</html>

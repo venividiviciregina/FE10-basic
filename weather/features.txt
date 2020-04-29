@@ -1,0 +1,6 @@
+- see forecast for date selected and wether history
+- select city from the list
+- pictures of the weather, backgraund showing the weather conditions
+- let to the user to choose which degrees (Celsius, Fahreiheight, Kelvin) to showing
+- do not show json to the user, show something much more human readable
+- show the weather data on the same page with the request (SPA - single page application)
