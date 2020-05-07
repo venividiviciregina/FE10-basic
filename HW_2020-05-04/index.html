@@ -19,7 +19,10 @@
             person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
             person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
             persons[i] = person;
-            averageAge += person.age; 
+
+            console.log('Person ' + i + ' Before addition ' + averageAge);
+            averageAge += +person.age; 
+            console.log('Person ' + i + ' After addition ' + averageAge);
         }
         averageAge /= personsNumber;
 
