@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html>
+<head>
+    <title>Sorted persons list (by name, from A to Z):
+        average value of their ages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var button = document.getElementById("prompt_button");
+
+            button.addEventListener("click", function () {
+
+                var prompted = prompt("Please enter a list of persons by name and age", "e.g. Denis 23,Anna 15");
+                var personArray = prompted.split(",");
+
+
+                var names = [];
+                var ages = 0;
+
+                for( var person of personArray ) {
+
+                    var agename = person.split(" ");
+                    names.push(agename[0]);
+                    ages += +agename[1];
+
+                }
+
+                var avg = ages / personArray.length ;
+
+                console.info( names.sort(), "The average age of persons",  avg );
+            });
+        }, false);
+
+    </script>
+</head>
+<body>
+<div>
+    <button id="prompt_button">Sorted persons list (by name, from A to Z):
+        average value of their ages</button>
+
+</div>
+</body>
+</html>
