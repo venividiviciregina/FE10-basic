@@ -7,20 +7,30 @@ console.log(personsNumber);
 for (let i = 0; i < personsNumber; i++) {
     const person = {};
     person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
-    person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
+    person.age = +prompt('Please enter age of the ' + (i + 1) + 'person');
     persons[i] = person;
 
+
     console.log('Person ' + i + ' Before addition ' + averageAge);
-    averageAge += +person.age; 
+    averageAge += +person.age;
     console.log('Person ' + i + ' After addition ' + averageAge);
 }
 averageAge /= personsNumber;
 
+
+document.getElementById('averageAge').innerHTML = averageAge;
+// const sortedPersons = persons.sort(function (a, b) {
+//         if (a.name < b.name) return -1;
+//         if (a.name > b.name) return 1;
+//         return 0;
+// });
+
 const sortedPersons = persons.sort(function (a, b) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
+    if (a.age > b.age) return -1;
+    if (a.age < b.age) return 1;
+    return 0;
 });
+
 
 let innerHtmlTableBody = '';
 for (let i = 0; i < personsNumber; i++) {
@@ -30,4 +40,10 @@ for (let i = 0; i < personsNumber; i++) {
 
 document.getElementsByTagName('tbody')[0].innerHTML = innerHtmlTableBody;
 
+
 console.log('Average age of person:' + averageAge);
+
+
+
+
+
