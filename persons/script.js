@@ -17,9 +17,7 @@ for (let i = 0; i < personsNumber; i++) {
 averageAge /= personsNumber;
 
 const sortedPersons = persons.sort(function (a, b) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
+    return a.age - b.age; // (25 - 30 = -5)
 });
 
 let innerHtmlTableBody = '';
