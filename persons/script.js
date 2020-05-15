@@ -19,19 +19,19 @@ function showUsersTable(persons = []) {
     document.querySelector('tfoot div.alert').innerHTML = 'Average age: ' + averageAge;
 }
 
-$(document).ready(function () {
-    let persons = [];
-    let averageAge = 0;
-    const personsNumber = prompt('Please enter the number of persons:');
-    console.log(personsNumber);
+let persons = [];
+let averageAge = 0;
+const personsNumber = prompt('Please enter the number of persons:');
+console.log(personsNumber);
 
 
-    for (let i = 0; i < personsNumber; i++) {
+for (let i = 0; i < personsNumber; i++) {
+    setTimeout(function() {
         const person = {};
         person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
         person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
         persons[i] = person;
 
         showUsersTable(persons);
-    }    
-});
+    }, 500)
+}    
