@@ -22,15 +22,16 @@ function showUsersTable(persons = []) {
 }
 
 let persons = [];
-const personsNumber = prompt('Please enter the number of persons:');
 
-for (let i = 0; i < personsNumber; i++) {
-    setTimeout(function() {
-        const person = {};
-        person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
-        person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
-        persons[i] = person;
+const form$ = document.getElementsByTagName('form')[0];
+form$.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        showUsersTable(persons);
-    }, 500)
-}    
+    let person = {};
+    person.name = document.querySelector('input[name=name]').value;
+    person.age = document.querySelector('input[name=age]').value;
+
+    persons.push(person);
+
+    showUsersTable(persons);
+})
