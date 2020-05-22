@@ -18,13 +18,18 @@
                 <label>User age</label>
                 <input type="text" class="form-control" name="age">
             </div>
+            <div class="form-group">
+                <label>User city</label>
+                <input type="text" class="form-control" name="city">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>    
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Age</th>
+                    <th scope="col" id="header_age">Age<span id="sort">&nbsp;asc</span></th>
+                    <th scope="col">City</th>
                 </tr>
             </thead>
             <tbody>
