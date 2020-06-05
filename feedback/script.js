@@ -1,4 +1,21 @@
-let data = [];
+let data = [
+    {
+      id: 1,  
+      name: 'Vasya'  
+    },
+    {
+      id: 2,
+      name: 'John'
+    },
+    {
+      id: 3,
+      name: 'Petya'
+    },
+];
+
+renderFeedbackTable(data);
+
+let sortedByName = 0; // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
 
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
@@ -21,10 +38,10 @@ document.querySelector('form').addEventListener('submit', event => {
     event.target.reset();
 
     // Drawing table body
-    renderFeedbackTable();
+    renderFeedbackTable(data);
 })
 
-function renderFeedbackTable() {
+function renderFeedbackTable(data) {
     let tbody = '';
 
     data.forEach(value => {
@@ -32,6 +49,29 @@ function renderFeedbackTable() {
     });
 
     document.querySelector('table tbody').innerHTML = tbody;
+}
+
+function sort() {
+    let sortedData = [...data];
+    if (sortedByName === 0) {
+        sortedData.sort((a, b) => {
+            if (a['name'] > b['name']) return 1;
+            if (a['name'] < b['name']) return -1;
+            return 0;
+        });
+        sortedByName = 1;
+    } else if (sortedByName === 1) {
+        sortedData.sort((a, b) => {
+            if (a['name'] > b['name']) return -1;
+            if (a['name'] < b['name']) return 1;
+            return 0;
+        });
+        sortedByName = -1;
+    } else {
+        sortedByName = 0;
+    }
+
+    renderFeedbackTable(sortedData);
 }
 
  
