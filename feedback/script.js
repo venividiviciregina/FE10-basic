@@ -1,15 +1,18 @@
 let data = [
     {
       id: 1,  
-      name: 'Vasya'  
+      name: 'a',
+      email: 'c@gmail.com',  
     },
     {
       id: 2,
-      name: 'John'
+      name: 'c',
+      email: 'a@gmail.com'
     },
     {
       id: 3,
-      name: 'Petya'
+      name: 'b',
+      email: 'b@gmail.com'
     },
 ];
 
@@ -51,28 +54,34 @@ function renderFeedbackTable(data) {
     document.querySelector('table tbody').innerHTML = tbody;
 }
 
-function sort() {
+function sort(column) {
     let sortedData = [...data];
     if (sortedByName === 0) {
         sortedData.sort((a, b) => {
-            if (a['name'] > b['name']) return 1;
-            if (a['name'] < b['name']) return -1;
+            if (a[column] > b[column]) return 1;
+            if (a[column] < b[column]) return -1;
             return 0;
         });
         sortedByName = 1;
+        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML + '\u2193';
     } else if (sortedByName === 1) {
         sortedData.sort((a, b) => {
-            if (a['name'] > b['name']) return -1;
-            if (a['name'] < b['name']) return 1;
+            if (a[column] > b[column]) return -1;
+            if (a[column] < b[column]) return 1;
             return 0;
         });
         sortedByName = -1;
+        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML.substr(0, document.getElementById(column).innerHTML.length - 1) + '\u2191';
     } else {
+        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML.substr(0, document.getElementById(column).innerHTML.length - 1);
         sortedByName = 0;
     }
 
     renderFeedbackTable(sortedData);
 }
 
- 
+document.querySelector('#name').addEventListener('click', function() {
+    sort('name');
+})
 
+// document.querySelector('#name') === document.getElementById('name')
