@@ -18,8 +18,6 @@ let data = [
 
 renderFeedbackTable(data);
 
-let sortedByName = 0; // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
-
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
     
@@ -54,27 +52,40 @@ function renderFeedbackTable(data) {
     document.querySelector('table tbody').innerHTML = tbody;
 }
 
-function sort(column) {
+let sorted = {
+    order: 0, // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
+    field: '',
+    fieldHeader: ''
+}; 
+
+function sort(field) {
     let sortedData = [...data];
-    if (sortedByName === 0) {
+    if (sorted.field !== '' && field !== sorted.field) {
+        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader;
+        sorted.order = 0;
+    }
+
+    sorted.field = field;
+    if (sorted.order === 0) {
+        sorted.fieldHeader = document.getElementById(field).innerHTML;
         sortedData.sort((a, b) => {
-            if (a[column] > b[column]) return 1;
-            if (a[column] < b[column]) return -1;
+            if (a[field] > b[field]) return 1;
+            if (a[field] < b[field]) return -1;
             return 0;
         });
-        sortedByName = 1;
-        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML + '\u2193';
-    } else if (sortedByName === 1) {
+        sorted.order = 1;
+        document.getElementById(field).innerHTML = sorted.fieldHeader + '\u2193';
+    } else if (sorted.order === 1) {
         sortedData.sort((a, b) => {
-            if (a[column] > b[column]) return -1;
-            if (a[column] < b[column]) return 1;
+            if (a[field] > b[field]) return -1;
+            if (a[field] < b[field]) return 1;
             return 0;
         });
-        sortedByName = -1;
-        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML.substr(0, document.getElementById(column).innerHTML.length - 1) + '\u2191';
+        sorted.order = -1;
+        document.getElementById(field).innerHTML = sorted.fieldHeader + '\u2191';
     } else {
-        document.getElementById(column).innerHTML = document.getElementById(column).innerHTML.substr(0, document.getElementById(column).innerHTML.length - 1);
-        sortedByName = 0;
+        document.getElementById(field).innerHTML = sorted.fieldHeader;
+        sorted.order = 0;
     }
 
     renderFeedbackTable(sortedData);
