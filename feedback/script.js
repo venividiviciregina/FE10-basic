@@ -16,6 +16,12 @@ let data = [
     },
 ];
 
+let sorted = {
+    order: 0, // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
+    field: '',
+    fieldHeader: ''
+}; 
+
 renderFeedbackTable(data);
 
 document.querySelector('form').addEventListener('submit', event => {
@@ -43,8 +49,18 @@ document.querySelector('form').addEventListener('submit', event => {
 })
 
 function renderFeedbackTable(data) {
-    let tbody = '';
 
+    const arrows = {
+        '0': '',
+        '1': '\u2193',
+        '-1': '\u2191'
+    };
+
+    if (sorted.field !== '') {
+        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader + arrows[sorted.order];
+    }
+
+    let tbody = '';
     data.forEach(value => {
         tbody += `<tr><td>${value.id}</td><td>${value.name}</td><td>${value.email}</td><td>${value.feedback}</td><td>${value.date}</td></tr>`;
     });
@@ -52,14 +68,9 @@ function renderFeedbackTable(data) {
     document.querySelector('table tbody').innerHTML = tbody;
 }
 
-let sorted = {
-    order: 0, // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
-    field: '',
-    fieldHeader: ''
-}; 
-
 function sort(field) {
     let sortedData = [...data];
+
     if (sorted.field !== '' && field !== sorted.field) {
         document.getElementById(sorted.field).innerHTML = sorted.fieldHeader;
         sorted.order = 0;
@@ -74,7 +85,6 @@ function sort(field) {
             return 0;
         });
         sorted.order = 1;
-        document.getElementById(field).innerHTML = sorted.fieldHeader + '\u2193';
     } else if (sorted.order === 1) {
         sortedData.sort((a, b) => {
             if (a[field] > b[field]) return -1;
@@ -82,9 +92,7 @@ function sort(field) {
             return 0;
         });
         sorted.order = -1;
-        document.getElementById(field).innerHTML = sorted.fieldHeader + '\u2191';
     } else {
-        document.getElementById(field).innerHTML = sorted.fieldHeader;
         sorted.order = 0;
     }
 
