@@ -1,3 +1,11 @@
 #feedbackTable {
     margin-top: 1rem;
 }
+
+th.arrow_down::after {
+    content: "\2193"
+}
+
+th.arrow_up::after {
+    content: "\2191"
+}

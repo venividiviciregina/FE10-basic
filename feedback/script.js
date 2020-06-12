@@ -19,7 +19,6 @@ let data = [
 let sorted = {
     order: 0, // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
     field: '',
-    fieldHeader: ''
 }; 
 
 renderFeedbackTable(data);
@@ -50,14 +49,18 @@ document.querySelector('form').addEventListener('submit', event => {
 
 function renderFeedbackTable(data) {
 
-    const arrows = {
-        '0': '',
-        '1': '\u2193',
-        '-1': '\u2191'
-    };
+    document.querySelectorAll('th').forEach((element) => {
+        element.classList.remove('arrow_down');
+        element.classList.remove('arrow_up');
+    });
 
-    if (sorted.field !== '') {
-        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader + arrows[sorted.order];
+    const classes = {
+        '1': 'arrow_down',
+        '-1': 'arrow_up'
+    }
+
+    if (sorted.order) {
+        document.getElementById(sorted.field).classList.add(classes[sorted.order]);
     }
 
     let tbody = '';
@@ -71,14 +74,12 @@ function renderFeedbackTable(data) {
 function sort(field) {
     let sortedData = [...data];
 
-    if (sorted.field !== '' && field !== sorted.field) {
-        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader;
+    if (sorted.field && field !== sorted.field) {
         sorted.order = 0;
     }
 
     sorted.field = field;
     if (sorted.order === 0) {
-        sorted.fieldHeader = document.getElementById(field).innerHTML;
         sortedData.sort((a, b) => {
             if (a[field] > b[field]) return 1;
             if (a[field] < b[field]) return -1;
